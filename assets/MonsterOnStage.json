@@ -1,0 +1,205 @@
+{
+  "name": "MonsterOnStage",
+  "data": [
+    {
+      "monsterId": 6000,
+      "stageId": 4000
+    },
+    {
+      "monsterId": 6010,
+      "stageId": 4000
+    },
+    {
+      "monsterId": 6020,
+      "stageId": 4000
+    },
+    {
+      "monsterId": 6030,
+      "stageId": 4000
+    },
+    {
+      "monsterId": 6040,
+      "stageId": 4000
+    },
+    {
+      "monsterId": 6001,
+      "stageId": 4001
+    },
+    {
+      "monsterId": 6011,
+      "stageId": 4001
+    },
+    {
+      "monsterId": 6021,
+      "stageId": 4001
+    },
+    {
+      "monsterId": 6031,
+      "stageId": 4001
+    },
+    {
+      "monsterId": 6041,
+      "stageId": 4001
+    },
+    {
+      "monsterId": 6002,
+      "stageId": 4002
+    },
+    {
+      "monsterId": 6012,
+      "stageId": 4002
+    },
+    {
+      "monsterId": 6022,
+      "stageId": 4002
+    },
+    {
+      "monsterId": 6032,
+      "stageId": 4002
+    },
+    {
+      "monsterId": 6042,
+      "stageId": 4002
+    },
+    {
+      "monsterId": 6003,
+      "stageId": 4003
+    },
+    {
+      "monsterId": 6013,
+      "stageId": 4003
+    },
+    {
+      "monsterId": 6023,
+      "stageId": 4003
+    },
+    {
+      "monsterId": 6033,
+      "stageId": 4003
+    },
+    {
+      "monsterId": 6043,
+      "stageId": 4003
+    },
+    {
+      "monsterId": 6004,
+      "stageId": 4004
+    },
+    {
+      "monsterId": 6014,
+      "stageId": 4004
+    },
+    {
+      "monsterId": 6024,
+      "stageId": 4004
+    },
+    {
+      "monsterId": 6034,
+      "stageId": 4004
+    },
+    {
+      "monsterId": 6044,
+      "stageId": 4004
+    },
+    {
+      "monsterId": 6005,
+      "stageId": 4005
+    },
+    {
+      "monsterId": 6015,
+      "stageId": 4005
+    },
+    {
+      "monsterId": 6025,
+      "stageId": 4005
+    },
+    {
+      "monsterId": 6035,
+      "stageId": 4005
+    },
+    {
+      "monsterId": 6045,
+      "stageId": 4005
+    },
+    {
+      "monsterId": 6006,
+      "stageId": 4006
+    },
+    {
+      "monsterId": 6016,
+      "stageId": 4006
+    },
+    {
+      "monsterId": 6026,
+      "stageId": 4006
+    },
+    {
+      "monsterId": 6036,
+      "stageId": 4006
+    },
+    {
+      "monsterId": 6046,
+      "stageId": 4006
+    },
+    {
+      "monsterId": 6007,
+      "stageId": 4007
+    },
+    {
+      "monsterId": 6017,
+      "stageId": 4007
+    },
+    {
+      "monsterId": 6027,
+      "stageId": 4007
+    },
+    {
+      "monsterId": 6037,
+      "stageId": 4007
+    },
+    {
+      "monsterId": 6047,
+      "stageId": 4007
+    },
+    {
+      "monsterId": 6008,
+      "stageId": 4008
+    },
+    {
+      "monsterId": 6018,
+      "stageId": 4008
+    },
+    {
+      "monsterId": 6028,
+      "stageId": 4008
+    },
+    {
+      "monsterId": 6038,
+      "stageId": 4008
+    },
+    {
+      "monsterId": 6048,
+      "stageId": 4008
+    },
+    {
+      "monsterId": 6009,
+      "stageId": 4009
+    },
+    {
+      "monsterId": 6019,
+      "stageId": 4009
+    },
+    {
+      "monsterId": 6029,
+      "stageId": 4009
+    },
+    {
+      "monsterId": 6039,
+      "stageId": 4009
+    },
+    {
+      "monsterId": 6049,
+      "stageId": 4009
+    }
+  ]
+}

@@ -79,7 +79,6 @@ model EquippedItem {
 model Monster {
   id            Int              @id
   monsterInfoId Int
-  name          String
   level         Int              @default(1)
   monsterInfo   MonsterInfo      @relation(fields: [monsterInfoId], references: [id])
   stages        MonsterOnStage[]
@@ -97,6 +96,7 @@ model MonsterInfo {
   defence  Int       @default(1)
   agility  Int       @default(1)
   speed    Int       @default(1)
+  exp      Int       @default(1)
   monsters Monster[]
 
   @@map("MonsterInfo")

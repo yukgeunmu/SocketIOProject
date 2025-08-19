@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 
-
 dotenv.config();
 
 // Recreate __dirname for ES Modules
@@ -50,16 +49,19 @@ export const fetchAndSaveAllSheets = async () => {
         const jsonData = dataRows.map((row) => {
           const rowObject = {};
           headers.forEach((header, index) => {
-            const value = row[index] || '';
-            const type = types[index];
+            const preValue = row[index].trim() || '';
+            const preType = types[index].trim() || '';
+            const value = preValue;
+            const type = preType;
+            const trimHeader = header.trim();
             if (type === 'int') {
               const parsedValue = parseInt(value, 10);
-              rowObject[header] = isNaN(parsedValue) ? 0 : parsedValue;
+              rowObject[trimHeader] = isNaN(parsedValue) ? 0 : parsedValue;
             } else if (type === 'float') {
               const parsedValue = parseFloat(value);
-              rowObject[header] = isNaN(parsedValue) ? 0.0 : parsedValue;
+              rowObject[trimHeader] = isNaN(parsedValue) ? 0.0 : parsedValue;
             } else {
-              rowObject[header] = value;
+              rowObject[trimHeader] = value;
             }
           });
           return rowObject;
@@ -73,18 +75,19 @@ export const fetchAndSaveAllSheets = async () => {
 
     // 3. Save the combined data into one file
 
-    for(var data in allSheetsData){
-        const outPath = path.join(__dirname, `./assets/${data}.json`);
-        const loadData = allSheetsData[data];
-        const object = {
-          name: data,
-          data: loadData,
-        };
-        fs.writeFileSync(outPath, JSON.stringify(object, null, 2), 'utf-8');
-        console.log(`\nSuccessfully saved all sheet data to ${data}`);
+    for (var data in allSheetsData) {
+      const outPath = path.join(__dirname, `./assets/${data}.json`);
+      const loadData = allSheetsData[data];
+      const object = {
+        name: data,
+        data: loadData,
+      };
+      fs.writeFileSync(outPath, JSON.stringify(object, null, 2), 'utf-8');
+      console.log(`\nSuccessfully saved all sheet data to ${data}`);
     }
-    
   } catch (error) {
     console.error('\nAn error occurred:', error);
   }
-}
+};
+
+fetchAndSaveAllSheets();

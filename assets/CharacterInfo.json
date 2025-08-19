@@ -2,7 +2,7 @@
   "name": "CharacterInfo",
   "data": [
     {
-      "id": "1000",
+      "id": 1000,
       "name": "전사",
       "health": 10,
       "mana": 10,
@@ -12,7 +12,7 @@
       "speed": 5
     },
     {
-      "id": "1001",
+      "id": 1001,
       "name": "궁수",
       "health": 10,
       "mana": 10,
@@ -22,7 +22,7 @@
       "speed": 5
     },
     {
-      "id": "1002",
+      "id": 1002,
       "name": "마법사",
       "health": 10,
       "mana": 10,
@@ -32,7 +32,7 @@
       "speed": 1
     },
     {
-      "id": "1003",
+      "id": 1003,
       "name": "성직자",
       "health": 10,
       "mana": 10,
