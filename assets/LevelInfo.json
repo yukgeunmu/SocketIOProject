@@ -1,0 +1,65 @@
+{
+  "name": "LevelInfo",
+  "data": [
+    {
+      "id": 5000,
+      "level": 1,
+      "statPoints": 1,
+      "requiredExp": 10
+    },
+    {
+      "id": 5001,
+      "level": 2,
+      "statPoints": 1,
+      "requiredExp": 20
+    },
+    {
+      "id": 5002,
+      "level": 3,
+      "statPoints": 2,
+      "requiredExp": 30
+    },
+    {
+      "id": 5003,
+      "level": 4,
+      "statPoints": 2,
+      "requiredExp": 40
+    },
+    {
+      "id": 5004,
+      "level": 5,
+      "statPoints": 3,
+      "requiredExp": 50
+    },
+    {
+      "id": 5005,
+      "level": 6,
+      "statPoints": 3,
+      "requiredExp": 60
+    },
+    {
+      "id": 5006,
+      "level": 7,
+      "statPoints": 4,
+      "requiredExp": 70
+    },
+    {
+      "id": 5007,
+      "level": 8,
+      "statPoints": 4,
+      "requiredExp": 80
+    },
+    {
+      "id": 5008,
+      "level": 9,
+      "statPoints": 5,
+      "requiredExp": 90
+    },
+    {
+      "id": 5009,
+      "level": 10,
+      "statPoints": 5,
+      "requiredExp": 100
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "MonsterInfo",
+  "data": [
+    {
+      "id": 2000,
+      "name": "슬라임",
+      "health": 5,
+      "mana": 1,
+      "attack": 1,
+      "defence": 1,
+      "agility": 1,
+      "speed": 1,
+      "exp": 1
+    },
+    {
+      "id": 2001,
+      "name": "스켈레톤",
+      "health": 10,
+      "mana": 1,
+      "attack": 3,
+      "defence": 1,
+      "agility": 3,
+      "speed": 2,
+      "exp": 5
+    },
+    {
+      "id": 2002,
+      "name": "고블린",
+      "health": 15,
+      "mana": 5,
+      "attack": 5,
+      "defence": 2,
+      "agility": 2,
+      "speed": 2,
+      "exp": 10
+    },
+    {
+      "id": 2003,
+      "name": "오크",
+      "health": 20,
+      "mana": 5,
+      "attack": 8,
+      "defence": 4,
+      "agility": 1,
+      "speed": 1,
+      "exp": 15
+    },
+    {
+      "id": 2004,
+      "name": "오우거",
+      "health": 50,
+      "mana": 10,
+      "attack": 15,
+      "defence": 8,
+      "agility": 1,
+      "speed": 1,
+      "exp": 20
+    }
+  ]
+}

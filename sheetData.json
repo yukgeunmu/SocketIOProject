@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1000",
+    "name": "전사",
+    "health": "10",
+    "mana": "10",
+    "attack": "5",
+    "defence": "10",
+    "agility": "1",
+    "speed": "5"
+  },
+  {
+    "id": "1001",
+    "name": "궁수",
+    "health": "10",
+    "mana": "10",
+    "attack": "5",
+    "defence": "1",
+    "agility": "10",
+    "speed": "5"
+  },
+  {
+    "id": "1002",
+    "name": "마법사",
+    "health": "10",
+    "mana": "10",
+    "attack": "10",
+    "defence": "1",
+    "agility": "1",
+    "speed": "1"
+  },
+  {
+    "id": "1003",
+    "name": "성직자",
+    "health": "10",
+    "mana": "10",
+    "attack": "1",
+    "defence": "1",
+    "agility": "1",
+    "speed": "1"
+  }
+]
