@@ -27,15 +27,16 @@ const readFileAsync = (fileName) => {
 
 export const loadGameAssets = async () => {
   try {
-    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster] = await Promise.all([
-      readFileAsync('CharacterInfo.json'),
-      readFileAsync('Item.json'),
-      readFileAsync('LevelInfo.json'),
-      readFileAsync('MonsterInfo.json'),
-      readFileAsync('Stage.json'),
-      readFileAsync('MonsterOnStage.json'),
-      readFileAsync('Monster.json'),
-    ]);
+    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster] =
+      await Promise.all([
+        readFileAsync('CharacterInfo.json'),
+        readFileAsync('Item.json'),
+        readFileAsync('LevelInfo.json'),
+        readFileAsync('MonsterInfo.json'),
+        readFileAsync('Stage.json'),
+        readFileAsync('MonsterOnStage.json'),
+        readFileAsync('Monster.json'),
+      ]);
 
     gameAssets = { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster };
     return gameAssets;
@@ -44,66 +45,44 @@ export const loadGameAssets = async () => {
   }
 };
 
-export const sendGameAssetsFromDB = async () => {
-  try {
-    const { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster } = gameAssets;
 
-    if (!CharacterInfo || !Item || !LevelInfo || !MonsterInfo || !Stage || !MonsterOnStage || !Monster) {
-      throw new Error('Game assets not loaded. Please call loadGameAssets first.');
-    }
-
-    const characterInfoDatas = CharacterInfo.data;
-    const itemDatas = Item.data;
-    const levelInfoDatas = LevelInfo.data;
-    const monsterInfoDatas = MonsterInfo.data;
-    const stageDatas = Stage.data;
-    const monsterOnStage = MonsterOnStage.data;
-    const monsterDatas = Monster.data;
-
-    await prisma.$transaction(async (tx) => {
-      //delete data
-      const deleteCharacterInfo = tx.characterInfo.deleteMany({});
-      const deleteItem = tx.item.deleteMany({});
-      const deleteLevel = tx.levelInfo.deleteMany({});
-      const deleteMonsterInfo = tx.monsterInfo.deleteMany({});
-      const deleteStage = tx.stage.deleteMany({});
- 
-
-      await prisma.$transaction([
-        deleteCharacterInfo,
-        deleteItem,
-        deleteLevel,
-        deleteMonsterInfo,
-        deleteStage,
-      ]);
-
-      await tx.monster.deleteMany({});
-      await tx.monsterOnStage.deleteMany({});
-
-      // Create new data
-      const createCharacterInfo = tx.characterInfo.createMany({ data: characterInfoDatas});
-      const createItem = tx.item.createMany({ data: itemDatas });
-      const createLevel = tx.levelInfo.createMany({ data: levelInfoDatas });
-      const createMonsterInfo = tx.monsterInfo.createMany({ data: monsterInfoDatas });
-      const createStage = tx.stage.createMany({ data: stageDatas });
-
-
-      await prisma.$transaction([
-        createCharacterInfo,
-        createItem,
-        createLevel,
-        createMonsterInfo,
-        createStage,
-      ]);
-
-      await tx.monster.createMany({data: monsterDatas});
-      await tx.monsterOnStage.createMany({ data: monsterOnStage });
-
-    });
-
-    console.log('Game assets have been successfully sent to the database.');
-  } catch (error) {
-    console.error('Failed to send game assets to DB:', error);
-    throw error;
-  }
+const tableMap = {
+  CharacterInfo: prisma.characterInfo,
+  MonsterInfo: prisma.monsterInfo,
+  Item: prisma.item,
+  Stage: prisma.stage,
+  LevelInfo: prisma.levelInfo,
+  Monster: prisma.monster,
+  MonsterOnStage: prisma.monsterOnStage,
 };
+
+async function upsertTable(tableName, data) {
+  const model = tableMap[tableName];
+  if (!model) throw new Error(`${tableName} 매핑된 모델 없음`);
+
+  return data.map((row) => {
+    const where =
+      tableName === 'MonsterOnStage'
+        ? { monsterId_stageId: { monsterId: row.monsterId, stageId: row.stageId } }
+        : { id: row.id };
+
+    return model.upsert({
+      where,
+      update: { ...row },
+      create: { ...row },
+    });
+  });
+}
+
+export async function updateAllGameAssets() {
+  const queries = [];
+
+  for (const [tableName, rows] of Object.entries(gameAssets)) {
+    if (!rows || rows.length === 0) continue;
+    queries.push(...(await upsertTable(tableName, rows.data)));
+  }
+
+  await prisma.$transaction(queries);
+  console.log('모든 정적 테이블 업데이트 완료');
+}
+

@@ -89,5 +89,3 @@ export const fetchAndSaveAllSheets = async () => {
     console.error('\nAn error occurred:', error);
   }
 };
-
-fetchAndSaveAllSheets();

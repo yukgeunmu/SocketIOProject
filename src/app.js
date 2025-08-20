@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import initSocket from './init/socket.js';
-import { loadGameAssets, sendGameAssetsFromDB } from './init/assets.js';
+import { loadGameAssets, updateAllGameAssets } from './init/assets.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -24,14 +24,5 @@ app.get('/', (req, res) => {
 
 server.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
-
-  try {
-    const assets = await loadGameAssets();
-    
-    console.log(assets);
-    console.log('Assets loaded successfully');
-  } catch (error) {
-    console.error('Failed to load game assets:', error);
-  }
 });
 
