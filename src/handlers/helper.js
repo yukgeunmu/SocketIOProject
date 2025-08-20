@@ -1,6 +1,7 @@
 import { getUsers, removeUser } from '../models/user.model.js';
 import { CLIENT_VERSION } from '../models/constants.js';
 import handlerMappings from './handleMapping.js';
+import { loadDBData } from '../init/assets.js';
 
 export const handleDisconnect = (socket, uuid) => {
   removeUser(socket.id); // 사용자 삭제
@@ -41,3 +42,10 @@ export const handleEvent = (io, socket, data) => {
   socket.emit('response', response);
 
 };
+
+export const handelLoadData = async (io, socket) =>{
+  const jsonGameData = await loadDBData();
+
+  socket.emit('sendData', jsonGameData);
+
+}

@@ -10,14 +10,15 @@ datasource db {
 
 model Player {
   id              Int            @id @default(autoincrement())
-  characterInfoId Int            @unique
+  characterInfoId Int            
+  levelInfoId     Int           
   nickName        String         @unique
-  level           Int            @default(1)
+
   exp             Int            @default(0)
-  MaxExp          Int            @default(10)
   equippedItems   EquippedItem[]
   inventory       Inventory[]
   characterInfo   CharacterInfo  @relation(fields: [characterInfoId], references: [id])
+  levelInfo     LevelInfo      @relation(fields: [levelInfoId], references: [id])
 
   @@map("Player")
 }
@@ -31,7 +32,7 @@ model CharacterInfo {
   defence Int     @default(1)
   agility Int     @default(1)
   speed   Int     @default(1)
-  player  Player?
+  player  Player[]
 
   @@map("CharacterInfo")
 }
@@ -126,6 +127,8 @@ model LevelInfo {
   level       Int
   statPoints  Int @default(1)
   requiredExp Int
+
+  player Player[]
 
   @@map("LevelInfo")
 }

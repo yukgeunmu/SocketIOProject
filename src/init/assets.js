@@ -27,24 +27,23 @@ const readFileAsync = (fileName) => {
 
 export const loadGameAssets = async () => {
   try {
-    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster] =
+    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, Monster, MonsterOnStage] =
       await Promise.all([
         readFileAsync('CharacterInfo.json'),
         readFileAsync('Item.json'),
         readFileAsync('LevelInfo.json'),
         readFileAsync('MonsterInfo.json'),
         readFileAsync('Stage.json'),
-        readFileAsync('MonsterOnStage.json'),
         readFileAsync('Monster.json'),
+        readFileAsync('MonsterOnStage.json'),
       ]);
 
-    gameAssets = { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, MonsterOnStage, Monster };
+    gameAssets = { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, Monster, MonsterOnStage };
     return gameAssets;
   } catch (err) {
     throw new Error('Failed to load game assets: ' + err.message);
   }
 };
-
 
 const tableMap = {
   CharacterInfo: prisma.characterInfo,
@@ -86,3 +85,31 @@ export async function updateAllGameAssets() {
   console.log('모든 정적 테이블 업데이트 완료');
 }
 
+// 유니티에 데이터 로드
+export const loadDBData = async () => {
+
+  const getCharacterInfo = prisma.characterInfo.findMany();
+  const getMonsterInfo = prisma.monsterInfo.findMany();
+  const getItem = prisma.item.findMany();
+  const getStage = prisma.stage.findMany();
+  const getLevelInfo = prisma.levelInfo.findMany();
+  const getMonster = prisma.monster.findMany();
+  const getMonsterOnStage = prisma.monsterOnStage.findMany();
+
+  const [characterInfo, monsterInfo, item, stage, levelInfo, monster, monsterOnStage] =
+    await Promise.all([
+      getCharacterInfo,
+      getMonsterInfo,
+      getItem,
+      getStage,
+      getLevelInfo,
+      getMonster,
+      getMonsterOnStage,
+    ]);
+
+
+  const allData = { characterInfo, monsterInfo, item, stage, levelInfo, monster, monsterOnStage };
+  
+  return JSON.stringify(allData, null, 2);
+
+};
