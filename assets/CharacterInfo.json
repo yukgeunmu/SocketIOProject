@@ -3,51 +3,41 @@
   "data": [
     {
       "id": 1000,
-      "name": "전사",
-      "health": 10,
-      "mana": 10,
-      "attack": 5,
-      "defence": 10,
-      "agility": 1,
-      "speed": 5
-    },
-    {
-      "id": 1001,
-      "name": "궁수",
-      "health": 10,
-      "mana": 10,
-      "attack": 5,
-      "defence": 1,
-      "agility": 10,
-      "speed": 5
-    },
-    {
-      "id": 1002,
-      "name": "마법사",
-      "health": 10,
-      "mana": 10,
-      "attack": 10,
-      "defence": 1,
-      "agility": 1,
-      "speed": 1
-    },
-    {
-      "id": 1003,
-      "name": "성직자",
-      "health": 10,
-      "mana": 10,
-      "attack": 1,
-      "defence": 1,
-      "agility": 1,
-      "speed": 1
-    },
-    {
-      "id": 1004,
-      "name": "수호자",
+      "name": "아리아",
       "health": 10,
       "mana": 10,
       "attack": 5,
       "defence": 5,
+      "agility": 5,
+      "speed": 5
+    },
+    {
+      "id": 1001,
+      "name": "로웰",
+      "health": 10,
+      "mana": 10,
+      "attack": 3,
+      "defence": 9,
+      "agility": 3,
+      "speed": 5
+    },
+    {
+      "id": 1002,
+      "name": "엘레나",
+      "health": 10,
+      "mana": 10,
+      "attack": 3,
+      "defence": 3,
+      "agility": 9,
+      "speed": 5
+    },
+    {
+      "id": 1003,
+      "name": "마사무네",
+      "health": 10,
+      "mana": 10,
+      "attack": 9,
+      "defence": 1,
       "agility": 5,
       "speed": 5
     }

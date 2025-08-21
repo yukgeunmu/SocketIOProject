@@ -19,11 +19,11 @@ export const handleConnection = (socket, userUUID) => {
   socket.emit('connection', { uuid: userUUID });
 };
 
-export const handleEvent = (io, socket, data) => {
-  if (!CLIENT_VERSION.includes(data.clientVersion)) {
-    socket.emit('response', { status: 'fail', message: 'Client version mismatch' });
-    return;
-  }
+export const handleEvent = async (io, socket, data) => {
+  // if (!CLIENT_VERSION.includes(data.clientVersion)) {
+  //   socket.emit('response', { status: 'fail', message: 'Client version mismatch' });
+  //   return;
+  // }
 
   const handler = handlerMappings[data.handlerId];
 
@@ -32,13 +32,12 @@ export const handleEvent = (io, socket, data) => {
     return;
   }
 
-  const response = handler(data.userId, data.payload);
+  const  response  = await handler(data);
 
-  if(response.broadcast){
-    io.emit('response', 'broadcast');
-    return;
-  }
-
+  // if(response.broadcast){
+  //   io.emit('response', 'broadcast');
+  //   return;
+  // }
   socket.emit('response', response);
 
 };
