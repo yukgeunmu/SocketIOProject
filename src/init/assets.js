@@ -27,18 +27,15 @@ const readFileAsync = (fileName) => {
 
 export const loadGameAssets = async () => {
   try {
-    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, Monster, MonsterOnStage] =
-      await Promise.all([
-        readFileAsync('CharacterInfo.json'),
-        readFileAsync('Item.json'),
-        readFileAsync('LevelInfo.json'),
-        readFileAsync('MonsterInfo.json'),
-        readFileAsync('Stage.json'),
-        readFileAsync('Monster.json'),
-        readFileAsync('MonsterOnStage.json'),
-      ]);
+    const [CharacterInfo, Item, LevelInfo, MonsterInfo, Stage] = await Promise.all([
+      readFileAsync('CharacterInfo.json'),
+      readFileAsync('Item.json'),
+      readFileAsync('LevelInfo.json'),
+      readFileAsync('MonsterInfo.json'),
+      readFileAsync('Stage.json'),
+    ]);
 
-    gameAssets = { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage, Monster, MonsterOnStage };
+    gameAssets = { CharacterInfo, Item, LevelInfo, MonsterInfo, Stage };
     return gameAssets;
   } catch (err) {
     throw new Error('Failed to load game assets: ' + err.message);
@@ -51,8 +48,6 @@ const tableMap = {
   Item: prisma.item,
   Stage: prisma.stage,
   LevelInfo: prisma.levelInfo,
-  Monster: prisma.monster,
-  MonsterOnStage: prisma.monsterOnStage,
 };
 
 async function upsertTable(tableName, data) {
@@ -60,13 +55,8 @@ async function upsertTable(tableName, data) {
   if (!model) throw new Error(`${tableName} 매핑된 모델 없음`);
 
   return data.map((row) => {
-    const where =
-      tableName === 'MonsterOnStage'
-        ? { monsterId_stageId: { monsterId: row.monsterId, stageId: row.stageId } }
-        : { id: row.id };
-
     return model.upsert({
-      where,
+      where: { id: row.id },
       update: { ...row },
       create: { ...row },
     });
@@ -87,29 +77,22 @@ export async function updateAllGameAssets() {
 
 // 유니티에 데이터 로드
 export const loadDBData = async () => {
-
   const getCharacterInfo = prisma.characterInfo.findMany();
   const getMonsterInfo = prisma.monsterInfo.findMany();
   const getItem = prisma.item.findMany();
   const getStage = prisma.stage.findMany();
   const getLevelInfo = prisma.levelInfo.findMany();
-  const getMonster = prisma.monster.findMany();
-  const getMonsterOnStage = prisma.monsterOnStage.findMany();
 
-  const [characterInfo, monsterInfo, item, stage, levelInfo, monster, monsterOnStage] =
+  const [characterInfo, monsterInfo, item, stage, levelInfo] =
     await Promise.all([
       getCharacterInfo,
       getMonsterInfo,
       getItem,
       getStage,
       getLevelInfo,
-      getMonster,
-      getMonsterOnStage,
     ]);
 
+  const allData = { characterInfo, monsterInfo, item, stage, levelInfo};
 
-  const allData = { characterInfo, monsterInfo, item, stage, levelInfo, monster, monsterOnStage };
-  
   return JSON.stringify(allData, null, 2);
-
 };

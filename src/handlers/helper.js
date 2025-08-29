@@ -20,10 +20,6 @@ export const handleConnection = (socket, userUUID) => {
 };
 
 export const handleEvent = async (io, socket, data) => {
-  // if (!CLIENT_VERSION.includes(data.clientVersion)) {
-  //   socket.emit('response', { status: 'fail', message: 'Client version mismatch' });
-  //   return;
-  // }
 
   const handler = handlerMappings[data.handlerId];
 

@@ -60,6 +60,66 @@
       "level": 10,
       "statPoints": 5,
       "requiredExp": 100
+    },
+    {
+      "id": 5010,
+      "level": 11,
+      "statPoints": 5,
+      "requiredExp": 110
+    },
+    {
+      "id": 5011,
+      "level": 12,
+      "statPoints": 5,
+      "requiredExp": 120
+    },
+    {
+      "id": 5012,
+      "level": 13,
+      "statPoints": 5,
+      "requiredExp": 130
+    },
+    {
+      "id": 5013,
+      "level": 14,
+      "statPoints": 5,
+      "requiredExp": 140
+    },
+    {
+      "id": 5014,
+      "level": 15,
+      "statPoints": 5,
+      "requiredExp": 150
+    },
+    {
+      "id": 5015,
+      "level": 16,
+      "statPoints": 5,
+      "requiredExp": 160
+    },
+    {
+      "id": 5016,
+      "level": 17,
+      "statPoints": 5,
+      "requiredExp": 170
+    },
+    {
+      "id": 5017,
+      "level": 18,
+      "statPoints": 5,
+      "requiredExp": 180
+    },
+    {
+      "id": 5018,
+      "level": 19,
+      "statPoints": 5,
+      "requiredExp": 190
+    },
+    {
+      "id": 5019,
+      "level": 20,
+      "statPoints": 5,
+      "requiredExp": 200
     }
   ]
 }

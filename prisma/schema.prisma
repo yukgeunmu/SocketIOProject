@@ -15,6 +15,7 @@ model Player {
   nickName        String         @unique
 
   exp             Int            @default(0)
+  score           Int            @default(0)
   equippedItems   EquippedItem[]
   inventory       Inventory[]
   characterInfo   CharacterInfo  @relation(fields: [characterInfoId], references: [id])
@@ -77,17 +78,6 @@ model EquippedItem {
   @@map("EquippedItem")
 }
 
-model Monster {
-  id            Int              @id
-  monsterInfoId Int
-  level         Int              @default(1)
-  monsterInfo   MonsterInfo      @relation(fields: [monsterInfoId], references: [id])
-  stages        MonsterOnStage[]
-
-  @@index([monsterInfoId], map: "Monster_monsterInfoId_fkey")
-  @@map("Monster")
-}
-
 model MonsterInfo {
   id       Int       @id
   name     String    @unique
@@ -97,30 +87,21 @@ model MonsterInfo {
   defence  Int       @default(1)
   agility  Int       @default(1)
   speed    Int       @default(1)
-  exp      Int       @default(1)
-  monsters Monster[]
 
   @@map("MonsterInfo")
 }
 
 model Stage {
-  id         Int              @id
-  stageLevel Int              @default(1)
-  monsters   MonsterOnStage[]
+  id            Int              @id
+  stageLevel    Int              @default(1)
+  stageExp      Int              @default(5)
+  spawn         Int              @default(1)
+  monsterLevel Int           @default(1)
 
   @@map("Stage")
 }
 
-model MonsterOnStage {
-  monsterId Int
-  stageId   Int
-  monster   Monster @relation(fields: [monsterId], references: [id])
-  stage     Stage   @relation(fields: [stageId], references: [id])
 
-  @@id([monsterId, stageId])
-  @@index([stageId], map: "MonsterOnStage_stageId_fkey")
-  @@map("MonsterOnStage")
-}
 
 model LevelInfo {
   id          Int @id

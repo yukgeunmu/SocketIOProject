@@ -3,43 +3,73 @@
   "data": [
     {
       "id": 4000,
-      "stageLevel": 1
+      "stageLevel": 1,
+      "stageExp": 5,
+      "spawn": 1,
+      "monsterLevel": 1
     },
     {
       "id": 4001,
-      "stageLevel": 2
+      "stageLevel": 2,
+      "stageExp": 10,
+      "spawn": 1,
+      "monsterLevel": 1
     },
     {
       "id": 4002,
-      "stageLevel": 3
+      "stageLevel": 3,
+      "stageExp": 15,
+      "spawn": 2,
+      "monsterLevel": 1
     },
     {
       "id": 4003,
-      "stageLevel": 4
+      "stageLevel": 4,
+      "stageExp": 20,
+      "spawn": 2,
+      "monsterLevel": 5
     },
     {
       "id": 4004,
-      "stageLevel": 5
+      "stageLevel": 5,
+      "stageExp": 25,
+      "spawn": 2,
+      "monsterLevel": 5
     },
     {
       "id": 4005,
-      "stageLevel": 6
+      "stageLevel": 6,
+      "stageExp": 30,
+      "spawn": 3,
+      "monsterLevel": 5
     },
     {
       "id": 4006,
-      "stageLevel": 7
+      "stageLevel": 7,
+      "stageExp": 35,
+      "spawn": 3,
+      "monsterLevel": 10
     },
     {
       "id": 4007,
-      "stageLevel": 8
+      "stageLevel": 8,
+      "stageExp": 40,
+      "spawn": 3,
+      "monsterLevel": 10
     },
     {
       "id": 4008,
-      "stageLevel": 9
+      "stageLevel": 9,
+      "stageExp": 45,
+      "spawn": 3,
+      "monsterLevel": 10
     },
     {
       "id": 4009,
-      "stageLevel": 10
+      "stageLevel": 10,
+      "stageExp": 50,
+      "spawn": 3,
+      "monsterLevel": 10
     }
   ]
 }

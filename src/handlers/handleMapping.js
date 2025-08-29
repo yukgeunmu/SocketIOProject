@@ -1,9 +1,9 @@
-import { createPlayer } from "./game.handler.js";
+import { createPlayer, saveScorePlayer, getItemInventory } from "./game.handler.js";
 
 const hanlerMappings = {
-    1: createPlayer
-    // 2: gameStart,
-    // 3: gameEnd,
+    1: createPlayer,
+    2: saveScorePlayer,
+    3: getItemInventory,
     // 11: moveStageHandler,
 }
 
