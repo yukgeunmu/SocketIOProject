@@ -74,3 +74,6 @@ node src/app.js
 ```
 
 서버는 `http://localhost:3000`에서 실행됩니다.
+
+게음 깃허브 주소입니다.
+https://github.com/yukgeunmu/2DActionGame.git
